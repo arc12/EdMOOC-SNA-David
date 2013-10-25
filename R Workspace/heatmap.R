@@ -1,6 +1,6 @@
 library("tm")
 
-doc <- Corpus(VectorSource(data.frame$store))
+doc <- Corpus(VectorSource(data.frame$post_text))
 summary(doc)
 
 doc.corpus <-tm_map(doc, removeWords, stopwords("english")) #removes stopwords
@@ -18,9 +18,9 @@ TDM
 inspect(TDM[1:10,1:10])
 
 findFreqTerms(TDM, 40)
-findAssocs(TDM, "think", 0.8)
+findAssocs(TDM, "think", 0.9)
 
-TDM.common = removeSparseTerms(TDM, 0.9)
+TDM.common = removeSparseTerms(TDM, 0.85)
 dim(TDM)
 dim(TDM.common)
 
