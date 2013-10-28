@@ -19,10 +19,11 @@ creategraphml<-function(x){
   iMrow = graph.adjacency(Mrow, mode = "undirected")
   E(iMrow)$weight <- count.multiple(iMrow)
   iMrow <- simplify(iMrow)
-  filelocation<-paste("outputs/graphml",x, ".graphml", sep = "")
+  filelocation<-paste("outputs/graphml/",x, ".graphml", sep = "")
   write.graph(iMrow, file=filelocation, format="graphml");
   
  }
 
-
 answer<-sapply(settings.databases$forum,  creategraphml)
+
+#TODO: use igraph to produce a pretty report about IDS and who is important. Check out Adams Knitr work
