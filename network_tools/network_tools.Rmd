@@ -22,7 +22,6 @@ source("centrality_measures.R")
 We can see the anon id of the top betweeness centrality for each forum: 
 
 ```{r}
-
 for (i in settings.databases[,1]) {
   print(i)
   print(top_bm[[i]])

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Text Tools</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Text Tools</h1>
+
+<p>Load settings file</p>
+
+<pre><code class="r">source(&quot;../load_settings.R&quot;)
+</code></pre>
+
+<p>grab topic models</p>
+
+<pre><code class="r">source(&quot;topic_moddeling.R&quot;)
+</code></pre>
+
+<pre><code>## Loading required package: DBI
+## Loading required package: mallet
+## Loading required package: rJava
+</code></pre>
+
+<pre><code>## [1] &quot;ed_aiplanfor&quot;
+## [1] &quot;ed_astrofor&quot;
+## [1] &quot;ed_critfor&quot;
+## [1] &quot;ed_equinefor&quot;
+## [1] &quot;ed_introfor&quot;
+## [1] &quot;ed_edcfor&quot;
+</code></pre>
+
+<p>List them:</p>
+
+<pre><code class="r">
+for (i in settings.databases[, 1]) {
+    print(i)
+    print(topicslist[[i]])
+}
+</code></pre>
+
+<pre><code>## [1] &quot;ed_aiplanfor&quot;
+##  [1] &quot;video link youtube download lecture&quot;                                       
+##  [2] &quot;miss boat cann missionaries node&quot;                                          
+##  [3] &quot;problem planning human article reading&quot;                                    
+##  [4] &quot;computer artificial science intelligence university&quot;                       
+##  [5] &quot;data network make analysis parallel&quot;                                       
+##  [6] &quot;i&#39;m learn hope student interesting&quot;                                        
+##  [7] &quot;state actions states goal initial&quot;                                         
+##  [8] &quot;coursera videos fine specific response&quot;                                    
+##  [9] &quot;statement accomplishment side statements scheduling&quot;                       
+## [10] &quot;i&#39;ll list case open place&quot;                                                 
+## [11] &quot;post problem length steps summary&quot;                                         
+## [12] &quot;found world technical solved worked&quot;                                       
+## [13] &quot;curso para sou todos olá&quot;                                                  
+## [14] &quot;years ago time engineer interest&quot;                                          
+## [15] &quot;robot presentation interesting log sharing&quot;                                
+## [16] &quot;domain point don&#39;t objects applicable&quot;                                     
+## [17] &quot;project working management hope short&quot;                                     
+## [18] &quot;subtitles line coursera subtitle split&quot;                                    
+## [19] &quot;game work back games reach&quot;                                                
+## [20] &quot;error planner message system details&quot;                                      
+## [21] &quot;plan planning good planner plans&quot;                                          
+## [22] &quot;paulo string public pacman static&quot;                                         
+## [23] &quot;program python return maze bug&quot;                                            
+## [24] &quot;human general initiative neuroscience create&quot;                              
+## [25] &quot;actions action effects layer move&quot;                                         
+## [26] &quot;programming assignment make it&#39;s work&quot;                                     
+## [27] &quot;robot world real ways physics&quot;                                             
+## [28] &quot;life meeting virtual group wiki&quot;                                           
+## [29] &quot;nodes search node graph heuristic&quot;                                         
+## [30] &quot;austin tate prof good gerhard&quot;                                             
+## [31] &quot;time students hard coursera due&quot;                                           
+## [32] &quot;thread forum https://class.coursera.org/aiplan forum/thread?thread_id post&quot;
+## [33] &quot;systems working management work fields&quot;                                    
+## [34] &quot;algorithm find path cost int&quot;                                              
+## [35] &quot;challenge creative wiki url artifact&quot;                                      
+## [36] &quot;code pddl assignment check pallet&quot;                                         
+## [37] &quot;intelligence courses development artificial algorithms&quot;                    
+## [38] &quot;empty set vazio gamma dizer&quot;                                               
+## [39] &quot;exams attempts assignments score deadline&quot;                                 
+## [40] &quot;actions size move hola load&quot;                                               
+## [41] &quot;week videos quizzes information lectures&quot;                                  
+## [42] &quot;search space solution algorithms algorithm&quot;                                
+## [43] &quot;survey university edinburgh mooc map&quot;                                      
+## [44] &quot;level foundation exam awareness final&quot;                                     
+## [45] &quot;planning systems techniques planners applications&quot;                         
+## [46] &quot;question answer questions wrong answers&quot;                                   
+## [47] &quot;planning related representation agent book&quot;                                
+## [48] &quot;i&#39;m learning i&#39;ve interested planning&quot;                                     
+## [49] &quot;life viewer location opensim don&#39;t&quot;                                        
+## [50] &quot;problem solve problems language puzzle&quot;                                    
+## [1] &quot;ed_astrofor&quot;
+##  [1] &quot;attempt mark quiz attempts end&quot;                      
+##  [2] &quot;english language subtitles spanish native&quot;           
+##  [3] &quot;make time lectures surprised poor&quot;                   
+##  [4] &quot;states time held range based&quot;                        
+##  [5] &quot;years time ago long back&quot;                            
+##  [6] &quot;week quiz score attempt quizzes&quot;                     
+##  [7] &quot;i&#39;m meet nice hope forward&quot;                          
+##  [8] &quot;mars mission nasa curiosity space&quot;                   
+##  [9] &quot;meteorite paper impact evidence interesting&quot;         
+## [10] &quot;curs moran cunning het dear&quot;                         
+## [11] &quot;time day night dont back&quot;                            
+## [12] &quot;http://www.youtube.com/watch?v die video watch space&quot;
+## [13] &quot;group study thread link facebook&quot;                    
+## [14] &quot;science world human theory evidence&quot;                 
+## [15] &quot;radio signals power beings pozdrav&quot;                  
+## [16] &quot;image description enter jpg http://i&quot;                
+## [17] &quot;star contact science civilization series&quot;            
+## [18] &quot;scientific evidence ufo information seti&quot;            
+## [19] &quot;time quizzes lectures coursera courses&quot;              
+## [20] &quot;dna evolution organisms cells cell&quot;                  
+## [21] &quot;book read books astrobiology reading&quot;                
+## [22] &quot;crop equation circles drake paradox&quot;                 
+## [23] &quot;question answer questions quiz answers&quot;              
+## [24] &quot;jesse casey harrison secondary land&quot;                 
+## [25] &quot;soy hola todos los curso&quot;                            
+## [26] &quot;life earth universe intelligent planet&quot;              
+## [27] &quot;aliens past alien human world&quot;                       
+## [28] &quot;para grupo curso todos olá&quot;                          
+## [29] &quot;water life oxygen energy atmosphere&quot;                 
+## [30] &quot;life earth mars system solar&quot;                        
+## [31] &quot;moon surface europa ice liquid&quot;                      
+## [32] &quot;sono che ciao tutti corso&quot;                           
+## [33] &quot;hogy jest nem jsem tak&quot;                              
+## [34] &quot;universe light big physics space&quot;                    
+## [35] &quot;bir çok ben herkese xerox&quot;                           
+## [36] &quot;star planets stars planet habitable&quot;                 
+## [37] &quot;find good i&#39;ve reading interesting&quot;                  
+## [38] &quot;science i&#39;m astronomy background school&quot;             
+## [39] &quot;point make intelligence kind number&quot;                 
+## [40] &quot;god religious religion people bible&quot;                 
+## [41] &quot;article interesting found link here&#39;s&quot;               
+## [42] &quot;video problem post issue download&quot;                   
+## [43] &quot;it&#39;s don&#39;t good things i&#39;ve&quot;                         
+## [44] &quot;cockell professor great astrobiology lectures&quot;       
+## [45] &quot;i&#39;m biology astrobiology interested interest&quot;        
+## [46] &quot;i&#39;m live can&#39;t usa wait&quot;                             
+## [47] &quot;space exploration nasa moon money&quot;                   
+## [48] &quot;ancient web history greek app&quot;                       
+## [49] &quot;don&#39;t can&#39;t read hear we&#39;re&quot;                         
+## [50] &quot;people truth knowledge put issues&quot;                   
+## [1] &quot;ed_critfor&quot;
+##  [1] &quot;diseases infectious disease health spread&quot;            
+##  [2] &quot;children people family life home&quot;                     
+##  [3] &quot;waste plastic recycling materials reduce&quot;             
+##  [4] &quot;fever dengue malaria cases infection&quot;                 
+##  [5] &quot;health public government national program&quot;            
+##  [6] &quot;homework post link week thread&quot;                       
+##  [7] &quot;hola buenos aires saludos todos&quot;                      
+##  [8] &quot;city cities urban areas hong&quot;                         
+##  [9] &quot;russia smoking russian fairtrade fair&quot;                
+## [10] &quot;water food clean drinking supply&quot;                     
+## [11] &quot;million people year years number&quot;                     
+## [12] &quot;information internet team lecture croatia&quot;            
+## [13] &quot;emissions gas environmental carbon air&quot;               
+## [14] &quot;u.s states united state america&quot;                      
+## [15] &quot;article potential norway netherlands retrieved&quot;       
+## [16] &quot;thinking critical good skills things&quot;                 
+## [17] &quot;argument question evidence conclusion answer&quot;         
+## [18] &quot;group study join facebook email&quot;                      
+## [19] &quot;time week final exam homework&quot;                        
+## [20] &quot;i&#39;m nice brazil meet hope&quot;                            
+## [21] &quot;i&#39;m class great coursera forward&quot;                     
+## [22] &quot;climate global change warming science&quot;                
+## [23] &quot;social issue society global human&quot;                    
+## [24] &quot;meat livestock animal production delhi&quot;               
+## [25] &quot;antibiotics drug patients drugs treatment&quot;            
+## [26] &quot;pakistan health medical country nigeria&quot;              
+## [27] &quot;impact environmental technology reduce equation&quot;      
+## [28] &quot;development global economic international sustainable&quot;
+## [29] &quot;obesity food obese addiction health&quot;                  
+## [30] &quot;food production products wasted waste&quot;                
+## [31] &quot;mexico sea ice level passage&quot;                         
+## [32] &quot;population education women growth rate&quot;               
+## [33] &quot;population rate years singapore country&quot;              
+## [34] &quot;world people problem life important&quot;                  
+## [35] &quot;problem answer issue question quiz&quot;                   
+## [36] &quot;hiv aids hiv/aids people india&quot;                       
+## [37] &quot;people country countries india problem&quot;               
+## [38] &quot;economic economy development resources processes&quot;     
+## [39] &quot;time remember sars school disease&quot;                    
+## [40] &quot;information article data research media&quot;              
+## [41] &quot;italy animals area problem fish&quot;                      
+## [42] &quot;species extinction human civilization conservation&quot;   
+## [43] &quot;people it&#39;s don&#39;t lot good&quot;                           
+## [44] &quot;energy power oil renewable coal&quot;                      
+## [45] &quot;flu born children diseases vaccines&quot;                  
+## [46] &quot;system process case understand general&quot;               
+## [47] &quot;fact theory facts true time&quot;                          
+## [48] &quot;china population pollution growth total&quot;              
+## [49] &quot;climate change global australia carbon&quot;               
+## [50] &quot;population countries resources consumption world&quot;     
+## [1] &quot;ed_equinefor&quot;
+##  [1] &quot;year years horse mare i&#39;m&quot;                   
+##  [2] &quot;stomach small gut intestine food&quot;            
+##  [3] &quot;feed horse horses diet feeding&quot;              
+##  [4] &quot;horse colic garlic vet teeth&quot;                
+##  [5] &quot;time don&#39;t makes question change&quot;            
+##  [6] &quot;weight horse body energy matter&quot;             
+##  [7] &quot;it&#39;s don&#39;t find read book&quot;                   
+##  [8] &quot;horses canada ontario live barn&quot;             
+##  [9] &quot;i&#39;m forward good year learning&quot;              
+## [10] &quot;laminitis insulin fructan starch sugar&quot;      
+## [11] &quot;horses i&#39;m equine nutrition forward&quot;         
+## [12] &quot;div carrots treats donkeys treat&quot;            
+## [13] &quot;feed horses horse feeding give&quot;              
+## [14] &quot;salt bit mouth block lick&quot;                   
+## [15] &quot;people great love interesting i&#39;m&quot;           
+## [16] &quot;worm worming worms horses wormers&quot;           
+## [17] &quot;yard work equine nutrition run&quot;              
+## [18] &quot;hay horses eat feed horse&quot;                   
+## [19] &quot;horse article good found condition&quot;          
+## [20] &quot;week time found great bit&quot;                   
+## [21] &quot;live i&#39;m south north west&quot;                   
+## [22] &quot;oil omega amino acids linseed&quot;               
+## [23] &quot;video lecture page videos link&quot;              
+## [24] &quot;herbs natural minerals organic good&quot;         
+## [25] &quot;hay haylage cut content grass&quot;               
+## [26] &quot;horse horses nutrition equine make&quot;          
+## [27] &quot;ponies laminitis weight horses pony&quot;         
+## [28] &quot;beet feed sugar pulp fibre&quot;                  
+## [29] &quot;equine nutrition i&#39;m animal science&quot;         
+## [30] &quot;hay water feed bran soaked&quot;                  
+## [31] &quot;problem issue post week summary&quot;             
+## [32] &quot;jpg http://i image description enter&quot;        
+## [33] &quot;horses live dogs learn i&#39;m&quot;                  
+## [34] &quot;ulcers system stomach track horse&quot;           
+## [35] &quot;protein high energy levels content&quot;          
+## [36] &quot;years horses horse ago great&quot;                
+## [37] &quot;i&#39;m horses learn hope vet&quot;                   
+## [38] &quot;day winter time summer weight&quot;               
+## [39] &quot;good luck thought things thing&quot;              
+## [40] &quot;hoof barefoot horse feet laminitis&quot;          
+## [41] &quot;meet nice alessandra italy portugal&quot;         
+## [42] &quot;grass pasture grazing grasses wsc&quot;           
+## [43] &quot;horses horse riding work years&quot;              
+## [44] &quot;great courses information enjoyed jo-anne&quot;   
+## [45] &quot;quiz question final answer week&quot;             
+## [46] &quot;states united state fodder results&quot;          
+## [47] &quot;horse blood due problem normal&quot;              
+## [48] &quot;horses research health diet long&quot;            
+## [49] &quot;mare foal mares foals months&quot;                
+## [50] &quot;supplement vitamin mineral minerals selenium&quot;
+## [1] &quot;ed_introfor&quot;
+##  [1] &quot;words model word understanding understand&quot;            
+##  [2] &quot;theory scientific science theories true&quot;              
+##  [3] &quot;art music language metaphysical epistemological&quot;      
+##  [4] &quot;para filosofia não ser por&quot;                           
+##  [5] &quot;philosophy i&#39;m class good learning&quot;                   
+##  [6] &quot;belief sheep knowledge true gettier&quot;                  
+##  [7] &quot;philosophy philosophers philosopher western read&quot;     
+##  [8] &quot;live south australia san work&quot;                        
+##  [9] &quot;knowledge true truth belief reality&quot;                  
+## [10] &quot;moral morality objective wrong relativism&quot;            
+## [11] &quot;world read reading infinite number&quot;                   
+## [12] &quot;human humans social sense natural&quot;                    
+## [13] &quot;problem week video issue post&quot;                        
+## [14] &quot;people good wrong society human&quot;                      
+## [15] &quot;jumper dave vision term ward&quot;                         
+## [16] &quot;time years great thought ago&quot;                         
+## [17] &quot;life meaning purpose question find&quot;                   
+## [18] &quot;religion god religious people religions&quot;              
+## [19] &quot;rand een het ayn ook&quot;                                 
+## [20] &quot;philosophy i&#39;m years university work&quot;                 
+## [21] &quot;target href http://www.youtube.com/watch?v link title&quot;
+## [22] &quot;nbsp quiz span score quizzes&quot;                         
+## [23] &quot;che sono ciao questo pub&quot;                             
+## [24] &quot;div morality subject subjects ethics&quot;                 
+## [25] &quot;mental state states pain physical&quot;                    
+## [26] &quot;love life knowledge wisdom experience&quot;                
+## [27] &quot;book read meal i&#39;m obsession&quot;                         
+## [28] &quot;god faith existence world vat&quot;                        
+## [29] &quot;question questions answer philosophical important&quot;    
+## [30] &quot;argument point reason conclusion based&quot;               
+## [31] &quot;i&#39;m meet nice hope people&quot;                            
+## [32] &quot;thread group discussion post forum&quot;                   
+## [33] &quot;language english american speak languages&quot;            
+## [34] &quot;brain computer room human mind&quot;                       
+## [35] &quot;people make world things understand&quot;                  
+## [36] &quot;testimony intellectual trust hume reid&quot;               
+## [37] &quot;it&#39;s don&#39;t can&#39;t i&#39;m doesn&#39;t&quot;                         
+## [38] &quot;philosophy thinking human definition things&quot;          
+## [39] &quot;mind consciousness experience body physical&quot;          
+## [40] &quot;i&#39;m live living forward meet&quot;                         
+## [41] &quot;universe exist nature exists existence&quot;               
+## [42] &quot;day free man light water&quot;                             
+## [43] &quot;philosophy science questions dead hawking&quot;            
+## [44] &quot;time travel past future back&quot;                         
+## [45] &quot;good dear time today image&quot;                           
+## [46] &quot;hume anonymous miracles miracle nature&quot;               
+## [47] &quot;week lectures lecture material found&quot;                 
+## [48] &quot;paulo são brazil sam pozdrav&quot;                         
+## [49] &quot;people world person things real&quot;                      
+## [50] &quot;hola soy todos por para&quot;                              
+## [1] &quot;ed_edcfor&quot;
+##  [1] &quot;watch show thought computer view&quot;                     
+##  [2] &quot;film movie robot robots story&quot;                        
+##  [3] &quot;metaphor open metaphors opening speed&quot;                
+##  [4] &quot;years ago back year courses&quot;                          
+##  [5] &quot;society utopia future dystopia world&quot;                 
+##  [6] &quot;education students teacher teachers learn&quot;            
+##  [7] &quot;thinking idea data ideas brain&quot;                       
+##  [8] &quot;technology technological technologies change society&quot; 
+##  [9] &quot;time people tech don&#39;t years&quot;                         
+## [10] &quot;twitter chat week edcmchat time&quot;                      
+## [11] &quot;assignment work artefact final link&quot;                  
+## [12] &quot;digital natives immigrants age years&quot;                 
+## [13] &quot;i&#39;m group english language forward&quot;                   
+## [14] &quot;communication technology people film utopian&quot;         
+## [15] &quot;it&#39;s don&#39;t people i&#39;m that&#39;s&quot;                         
+## [16] &quot;tecnología creo vida forma cuando&quot;                    
+## [17] &quot;mooc time experience discussion class&quot;                
+## [18] &quot;los hola para las con&quot;                                
+## [19] &quot;video image text face description&quot;                    
+## [20] &quot;https://class.coursera.org/edc page digital week link&quot;
+## [21] &quot;technologies time phone today watching&quot;               
+## [22] &quot;het een van dat mijn&quot;                                 
+## [23] &quot;social knowledge digital world environment&quot;           
+## [24] &quot;blog post week edcmooc twitter&quot;                       
+## [25] &quot;questions free open elearning question&quot;               
+## [26] &quot;education access moocs people higher&quot;                 
+## [27] &quot;time find information connect content&quot;                
+## [28] &quot;human world real humans create&quot;                       
+## [29] &quot;dystopian utopian films series stories&quot;               
+## [30] &quot;space culture time things place&quot;                      
+## [31] &quot;human humans humanity means values&quot;                   
+## [32] &quot;future technology glass utopian video&quot;                
+## [33] &quot;university universities moocs coursera business&quot;      
+## [34] &quot;http://www.youtube.com/watch?v music made video found&quot;
+## [35] &quot;school online work university college&quot;                
+## [36] &quot;meat made aliens thought means&quot;                       
+## [37] &quot;people life make things live&quot;                         
+## [38] &quot;game games video sight real&quot;                          
+## [39] &quot;good clip man view point&quot;                             
+## [40] &quot;sense love personal nature turn&quot;                      
+## [41] &quot;charlie society control freedom future&quot;               
+## [42] &quot;technology world nature bird film&quot;                    
+## [43] &quot;learning education online students learn&quot;             
+## [44] &quot;access work assessment artefact peer&quot;                 
+## [45] &quot;problem issue care health problems&quot;                   
+## [46] &quot;interesting read good find point&quot;                     
+## [47] &quot;technology film machine people bendito&quot;               
+## [48] &quot;olá todos sou curso estou&quot;                            
+## [49] &quot;content internet connection question large&quot;           
+## [50] &quot;social information media internet web&quot;
+</code></pre>
+
+<p>graph them.</p>
+
+</body>
+
+</html>
+

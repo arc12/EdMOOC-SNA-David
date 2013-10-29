@@ -32,12 +32,17 @@ for (i in settings.databases[,1]) {
   #lets find the 3 classic centrality measures
   
   betweeness_measures<-sort(betweenness(iMrow), decreasing = TRUE)
-  bm_top20 <- betweeness_measures[1:20]
+  bm_top20 <- betweeness_measures[1:5]
   degree_measures<-sort(degree(iMrow), decreasing = TRUE)
-  de_top20 <- degree_measures[1:20]
+  de_top20 <- degree_measures[1:5]
   
   top_bm[[i]]<-bm_top20
   top_degrees[[i]]<-de_top20
 
   
   }
+
+# TODO centrality measures
+for (i in top_bm) {
+  print(i);
+}
