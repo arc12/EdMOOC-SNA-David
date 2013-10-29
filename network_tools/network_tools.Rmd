@@ -1,0 +1,18 @@
+Network Tools
+========================================================
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **MD** toolbar button for help on Markdown).
+
+
+This will generate graphml files for everything in forum, at the moment this is based on posts in a thread, bungs them in the output folder, comment this out if you don't want the Gephi files:
+
+```{r}
+source("network_tools/graphml_generation_tool.R")
+```
+
+We can also figure out the top inbetweenness centrality for each poster:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
