@@ -4,6 +4,7 @@ require(mallet)
 
 for (i in settings.databases[,1]) {
   
+  
   db<-i
   print(db)
   
