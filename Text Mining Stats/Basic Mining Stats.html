@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Basic Forum Stats</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Basic Forum Stats</h1>
+
+<h2>Qty of forums, threads, posts, comments</h2>
+
+<pre><code>## SELECT post_text, post_time from ed_aiplanfor.forum_posts
+</code></pre>
+
+<pre><code>## Error: invalid &#39;row.names&#39; length
+</code></pre>
+
+<pre><code>## SELECT count(id) threads, sum(deleted) threads_deleted, sum(is_spam) threads_spam,
+##    sum(stickied) threads_stickied, sum(instructor_replied) threads_instructor_replied,
+##    sum(anonymous) threads_anonymous, avg(votes) threads_average_votes, 
+##    (SELECT count(1) from ed_aiplanfor.forum_tags_threads) threads_tags,
+##    (SELECT count(1) from ed_aiplanfor.forum_subscribe_threads) threads_user_subscriptions
+##    from ed_aiplanfor.forum_threads
+</code></pre>
+
+<pre><code>## SELECT count(id) posts, sum(deleted) posts_deleted, sum(is_spam) posts_spam,
+##    sum(stickied) posts_stickied, sum(approved) posts_approved, sum(anonymous) posts_anonymous,
+##    avg(votes) posts_average_votes from ed_aiplanfor.forum_posts
+</code></pre>
+
+<pre><code>## SELECT count(id) comments, sum(deleted) comments_deleted,
+##    sum(is_spam) comments_spam, sum(anonymous) comments_anonymous, avg(votes) comments_average_votes
+##    from ed_aiplanfor.forum_comments
+</code></pre>
+
+<h3>Forums</h3>
+
+<pre><code>## Error: object &#39;forumCount.df&#39; not found
+</code></pre>
+
+<h3>Threads</h3>
+
+<table><thead>
+<tr>
+<th align="left">id</th>
+<th align="center">threads</th>
+<th align="center">threads_deleted</th>
+<th align="center">threads_spam</th>
+<th align="center">threads_stickied</th>
+<th align="center">threads_instructor_replied</th>
+<th align="center">threads_anonymous</th>
+<th align="center">threads_average_votes</th>
+<th align="center">threads_tags</th>
+<th align="center">threads_user_subscriptions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">aiplan</td>
+<td align="center">436</td>
+<td align="center">31</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">306</td>
+<td align="center">64</td>
+<td align="center">1.2385</td>
+<td align="center">378</td>
+<td align="center">1140</td>
+</tr>
+<tr>
+<td align="left">astro</td>
+<td align="center">1727</td>
+<td align="center">43</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">49</td>
+<td align="center">134</td>
+<td align="center">3.8471</td>
+<td align="center">1375</td>
+<td align="center">9299</td>
+</tr>
+<tr>
+<td align="left">crit</td>
+<td align="center">3091</td>
+<td align="center">52</td>
+<td align="center">1</td>
+<td align="center">16</td>
+<td align="center">272</td>
+<td align="center">274</td>
+<td align="center">0.7554</td>
+<td align="center">2004</td>
+<td align="center">8621</td>
+</tr>
+<tr>
+<td align="left">edc</td>
+<td align="center">1452</td>
+<td align="center">22</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">195</td>
+<td align="center">48</td>
+<td align="center">0.7424</td>
+<td align="center">1726</td>
+<td align="center">7319</td>
+</tr>
+<tr>
+<td align="left">equine</td>
+<td align="center">4865</td>
+<td align="center">27</td>
+<td align="center">3</td>
+<td align="center">18</td>
+<td align="center">1145</td>
+<td align="center">186</td>
+<td align="center">0.3963</td>
+<td align="center">1081</td>
+<td align="center">14413</td>
+</tr>
+<tr>
+<td align="left">intro</td>
+<td align="center">3836</td>
+<td align="center">71</td>
+<td align="center">3</td>
+<td align="center">39</td>
+<td align="center">192</td>
+<td align="center">242</td>
+<td align="center">1.3728</td>
+<td align="center">2941</td>
+<td align="center">15077</td>
+</tr>
+</tbody></table>
+
+<p>This does not count threads in a deleted parent forum as being deleted threads.</p>
+
+<h3>Posts</h3>
+
+<table><thead>
+<tr>
+<th align="left">id</th>
+<th align="center">posts</th>
+<th align="center">posts_deleted</th>
+<th align="center">posts_spam</th>
+<th align="center">posts_stickied</th>
+<th align="center">posts_approved</th>
+<th align="center">posts_anonymous</th>
+<th align="center">posts_average_votes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">aiplan</td>
+<td align="center">1846</td>
+<td align="center">71</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">144</td>
+<td align="center">0.7893</td>
+</tr>
+<tr>
+<td align="left">astro</td>
+<td align="center">12857</td>
+<td align="center">374</td>
+<td align="center">19</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">877</td>
+<td align="center">1.3724</td>
+</tr>
+<tr>
+<td align="left">crit</td>
+<td align="center">11120</td>
+<td align="center">275</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">779</td>
+<td align="center">0.5955</td>
+</tr>
+<tr>
+<td align="left">edc</td>
+<td align="center">8943</td>
+<td align="center">157</td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">201</td>
+<td align="center">0.5186</td>
+</tr>
+<tr>
+<td align="left">equine</td>
+<td align="center">18873</td>
+<td align="center">233</td>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">541</td>
+<td align="center">0.3951</td>
+</tr>
+<tr>
+<td align="left">intro</td>
+<td align="center">20285</td>
+<td align="center">771</td>
+<td align="center">23</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1397</td>
+<td align="center">0.8974</td>
+</tr>
+</tbody></table>
+
+<p>This does not count posts in a deleted parent thread as being deleted posts.</p>
+
+<h3>Comments</h3>
+
+<table><thead>
+<tr>
+<th align="left">id</th>
+<th align="center">comments</th>
+<th align="center">comments_deleted</th>
+<th align="center">comments_spam</th>
+<th align="center">comments_anonymous</th>
+<th align="center">comments_average_votes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">aiplan</td>
+<td align="center">697</td>
+<td align="center">58</td>
+<td align="center">0</td>
+<td align="center">30</td>
+<td align="center">0.4046</td>
+</tr>
+<tr>
+<td align="left">astro</td>
+<td align="center">8960</td>
+<td align="center">417</td>
+<td align="center">15</td>
+<td align="center">771</td>
+<td align="center">0.6184</td>
+</tr>
+<tr>
+<td align="left">crit</td>
+<td align="center">3550</td>
+<td align="center">220</td>
+<td align="center">1</td>
+<td align="center">210</td>
+<td align="center">0.5406</td>
+</tr>
+<tr>
+<td align="left">edc</td>
+<td align="center">5293</td>
+<td align="center">195</td>
+<td align="center">6</td>
+<td align="center">118</td>
+<td align="center">0.6148</td>
+</tr>
+<tr>
+<td align="left">equine</td>
+<td align="center">6686</td>
+<td align="center">129</td>
+<td align="center">4</td>
+<td align="center">220</td>
+<td align="center">0.3035</td>
+</tr>
+<tr>
+<td align="left">intro</td>
+<td align="center">17735</td>
+<td align="center">915</td>
+<td align="center">12</td>
+<td align="center">1616</td>
+<td align="center">0.6345</td>
+</tr>
+</tbody></table>
+
+<p>This does not count comments in a deleted parent posts as being deleted comments.</p>
+
+<pre><code>## SELECT post_text, post_time from ed_aiplanfor.forum_posts
+</code></pre>
+
+<pre><code>## Error: objects &#39;accessed.df&#39;, &#39;forumCount.df&#39;, &#39;bushiness.df&#39;,
+## &#39;orphans.df&#39;, &#39;forumTopStruct&#39;, &#39;posterRoles.df&#39;, &#39;posterDistS&#39;,
+## &#39;posterDistT&#39;, &#39;commenterDistS&#39;, &#39;commenterDistT&#39;, &#39;post_commentDist&#39;,
+## &#39;post_commentDist2&#39; not found
+</code></pre>
+
+<pre><code>## Saved to Basic Forum Stats.RData 
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</body>
+
+</html>
+

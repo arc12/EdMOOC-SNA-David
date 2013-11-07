@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Network Tools</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Network Tools</h1>
+
+<p>Load settings file</p>
+
+<pre><code class="r">source(&quot;../load_settings.R&quot;)
+</code></pre>
+
+<p>This will generate graphml files for everything in forum, at the moment this is based on posts in a thread, bungs them in the output folder, comment this out if you don&#39;t want the Gephi files:</p>
+
+<pre><code class="r"># source(&#39;network_tools/graphml_generation_tool.R&#39;)
+</code></pre>
+
+<p>We can also figure out the top inbetweenness centrality for each poster using the script at:</p>
+
+<pre><code class="r">source(&quot;centrality_measures.R&quot;)
+</code></pre>
+
+<pre><code>## Loading required package: DBI
+</code></pre>
+
+<pre><code>## [1] &quot;ed_aiplanfor&quot;
+## [1] &quot;ed_astrofor&quot;
+## [1] &quot;ed_critfor&quot;
+## [1] &quot;ed_equinefor&quot;
+## [1] &quot;ed_introfor&quot;
+## [1] &quot;ed_edcfor&quot;
+## [1] &quot;ed_aiplanfor&quot;
+## e99fdd408b9870bcf17419d5e212c0a364a4dbd0 
+##                                   5405.4 
+## 5a767e2af9d12ec1c09dab9eb98638d9a5f8885d 
+##                                   1501.5 
+## caeffa1d0ad81d2589ee62973a363fc91bd27561 
+##                                   1415.3 
+## 52f41bbdb61d3ef65ae98ba58f4b5043c71cd4b2 
+##                                   1015.1 
+## 476051f0a57b084645139faf96e933cf079d020b 
+##                                    858.1 
+## b1eacfc2ebdc91f89743e9e7a70b4195e99c6ce5 
+##                                    803.3 
+## 9ae0f6cfb9e83db30faca2b87203b46995f96654 
+##                                    788.5 
+## 8d745ed2bf5b5c8db1567caaa522d5c902d19e61 
+##                                    683.9 
+## 57283da96bbb27a4992e316a24a9a52e4d884ea8 
+##                                    590.0 
+## 745b06a1658783c9152dcef0d928dce18eff37da 
+##                                    456.0 
+## 60de574ce280106cf1d364f12da4cc91b2b60404 
+##                                    436.8 
+## 9d32eb7bed1f9b312878ec4f56c7a30718be5fc4 
+##                                    436.2 
+## 540e3d24e61c6a6ffaeab718d8ffb0459220b48b 
+##                                    413.0 
+## 760243d0f259cd3453eda186fb703aa52ed092dc 
+##                                    378.1 
+## 40bd1dc52753049cf4c081e6b80bbbd6059a7b8c 
+##                                    360.3 
+## e5c75cba8d9644469d08fbe9366d37aa508c1968 
+##                                    348.0 
+## 696d365f7468fa615cd11924fe06c00825f93153 
+##                                    345.0 
+## 99672c4bb7a84d4fe2c6edecf55a671a9d4a3121 
+##                                    319.2 
+## f8dd082b17cea34b5206a6fa7b3f830dfdd63360 
+##                                    319.2 
+## 726ad5dcc80f28f3435587a7697b685cd0999e25 
+##                                    300.3 
+## [1] &quot;ed_astrofor&quot;
+## 03c0e6ebff34445193b6c7c68cc59bb951fe8089 
+##                                    86204 
+## f46d050002d9abf87560899f3af4af9349d775bc 
+##                                    69081 
+## c730d376fb14523bf01be79ac927050fbc1ebb0f 
+##                                    68764 
+## a5c77cc395c9feb0ad0e7284687af2e8441bd659 
+##                                    68713 
+## 57ecaa66b4c47d56d2fa449d06204da2e65c4709 
+##                                    65079 
+## f59fa5327c4007f70e5d320156435af9bdc24c3c 
+##                                    64353 
+## f9a98ac1e3bfbe334aa9c14e871bd4dc682b7d8c 
+##                                    61983 
+## 4dcb05cdf3efb78625f8305ea997bf9c0a93a5a5 
+##                                    49188 
+## 4e595ee6f98705d6257349dd11f8ce61dbc025dc 
+##                                    48257 
+## e28b83e67ac394a0989c0849ff4c7d9291934a5f 
+##                                    46798 
+## c0c2552c387f4386f5a0cbb279df75bee630af98 
+##                                    46738 
+## ac816c943517abefdc4093b4229cda07ee2beee6 
+##                                    43319 
+## b744c2359fe2d4c7e3f09bbe6e6747d32ddd8175 
+##                                    41906 
+## 5bdf4892e5700369c51fea6488778918eb9cd397 
+##                                    39872 
+## 241865389818c3de230373f985562640bb888323 
+##                                    39020 
+## b4c39470b526ffa4abe5e2f152d2cacb3e418561 
+##                                    38239 
+## ab8ea42fa4e7f72628bf6f07e1f87ea975319c9a 
+##                                    37753 
+## 826b35ae060043ca58e6f4dc7ce4e691ccd1d0d5 
+##                                    37484 
+## bd59c17b9226cebe95da62a8808ce53a296e7f13 
+##                                    33831 
+## 655acbc6466541e7963dc8bc4a2e05cf159ea079 
+##                                    30957 
+## [1] &quot;ed_critfor&quot;
+## e6fd6651dc1b0c116f89c27ab98119b83a35399c 
+##                                    95111 
+## 878c5fbbb632b9d62640addf3276abec2a2df5f2 
+##                                    59000 
+## cfc1510b5769214a92d4a11c17c12deb7dd9b13b 
+##                                    53861 
+## e65807e299412ce8a15015974703b083cf5246eb 
+##                                    42911 
+## e4f640e526ab9e6a25e97e33b8ecf5421ce142fd 
+##                                    37523 
+## 3d53d24c860cd178fc3fecf3c415b99fbfa50511 
+##                                    34042 
+## 9d3e26b03d1d18f4b754fc0af0a87c64e8dde563 
+##                                    31406 
+## c2cafdffe3026680d70e67eeeefb5a1e99f1d857 
+##                                    27467 
+## cdfe2bbfde737031c1777c7e4fa39d2d2858fdda 
+##                                    23919 
+## 79461a7d6dc917b1354d7dc5d111c66709b0b699 
+##                                    23525 
+## 309a07aa2693d34d4db58b57d7715ae197361bdb 
+##                                    23198 
+## 8410485309a24e9e08c5d11985ff5c227c8b057c 
+##                                    22859 
+## 1ca44397e253ef795dfed137ce91c2757cc71562 
+##                                    21859 
+## 288373c1ad59b095c772a3e90122204ea789e3fb 
+##                                    20939 
+## d0c465a8b80c50fc44ebeac6bf07ae0eba94611c 
+##                                    20422 
+## 8115fabcc1e87652d48329238e87a66b51761251 
+##                                    19081 
+## 9ee4aa4f5b19060e847c1ddbdb431d53d63156d6 
+##                                    18280 
+## f6d6564e72d11b0d83f4281675747017c6a6cfa0 
+##                                    18085 
+## 60225550b4c8cf050c466019de8750d2e81f8b0c 
+##                                    18010 
+## 4ba9d9a9a2276919235ea4a36fdeeca96f165db1 
+##                                    17666 
+## [1] &quot;ed_equinefor&quot;
+## 74873787c8a41b0f6503a012bd5730ff09411ac6 
+##                                   101207 
+## 3563870d026aaf2a175e28e76ea50d943aab04ca 
+##                                    86915 
+## 28189337c30cf629d3d05ea05613765f6afd1837 
+##                                    57120 
+## f675799cad241b0b8d21ac985a268221262f208d 
+##                                    51272 
+## ae3bd3c19dbd508a281411581eb8e493cc7a5260 
+##                                    48612 
+## 06098328fbcfa25ecb76ce18202817e9f2ff2ee3 
+##                                    45218 
+## 301363b57f540ad208c0c9b4a52ba06b688d8d60 
+##                                    37229 
+## afa7a2f390fa35a4ec0d46f85f48b423bde0b9e1 
+##                                    33811 
+## 259f4b732bffcbacfdf407c59662e3c696564953 
+##                                    33731 
+## 61eb92948ec1616bc3496132b045ed984c70c9a4 
+##                                    30310 
+## 52444afc380d55a774ff330e573bbf9efbc57f7f 
+##                                    29983 
+## 9c1a3dad1d71b1531ec129a5cac5b1006af771d1 
+##                                    29473 
+## 3ef0532c0cd7027e37828f44187c502ed5438324 
+##                                    29110 
+## 812c77b74b0ab201d31bf51ffb58de0dde9ba893 
+##                                    27915 
+## 7aea6002147ed534fcb9530eb38b024c11a74a9b 
+##                                    27697 
+## e224e14efef1ad355cb48e93a64d974dc5464b5d 
+##                                    25030 
+## 158261eb3f2effda6e46833ed6655e0988e58ae6 
+##                                    24682 
+## 3aef7e42e920b22a2c02399e22ee050a95a5be71 
+##                                    24647 
+## 18a0615c7e065d1079682d77e6b80621dcdf5fd4 
+##                                    24524 
+## e53df92e9d85c1ef4c6d58babd3903db0bf898a3 
+##                                    23791 
+## [1] &quot;ed_introfor&quot;
+## 6cf62e6072fa139e6d5637f947e26a9a30558a5f 
+##                                   308031 
+## 7ff5a840a86fefb92fc6c3d2c79fe2502e927adb 
+##                                   267193 
+## e54243193928805247c7ae2fcf7f40c46a06fbaf 
+##                                   166946 
+## 06099a45eeaa36f4f6e2267392b1b8d65822dcbb 
+##                                   163249 
+## 6b3fc80186777fe1e01efcd3f14fb310bc5b8aea 
+##                                   155529 
+## b0cdcf315f19b8fd24a6ba557516289eb93bcf8a 
+##                                   147133 
+## 56512fff97729a89bbf4b752937bae1e66cc1405 
+##                                   128230 
+## 9f96959fd778d67f9819774d98fdd7471631225b 
+##                                   121371 
+## f2bfa78173941c329a1d8b11a123c3a9ab1f8eee 
+##                                    96805 
+## c6f38631f45d07ae5d943b3e949924d12346a5cc 
+##                                    93588 
+## d3ba23ec2a7d607e7c02706547bd5779d91dab38 
+##                                    93345 
+## e477f94d188d69dae3bbcf2648910e4c97196d81 
+##                                    92524 
+## 20ae763e6631792c33ecca510c75c41bed0d7a47 
+##                                    85014 
+## a3e084fe6917095335b07e11e26ae9230d4dfa9f 
+##                                    84592 
+## db61f7a5e00e6a44ee0a9bd09cdfbafe9ac56a75 
+##                                    83391 
+## 51921a075b8169a4f7422f4b52ca449a94e6562a 
+##                                    80414 
+## 8a41da2358bd108145da57c11e5c1d590ab4a04f 
+##                                    78354 
+## adb2104bd06cc22eb7ccb7fcd71b46f10209609c 
+##                                    77728 
+## dc74dade99090e90a5a78153d4af0eb402288115 
+##                                    69092 
+## 1013a2e0fb277b66525f25019cbbbcbc65be0f99 
+##                                    67873 
+## [1] &quot;ed_edcfor&quot;
+## b334d2db581d0796f810b600c5b440c08eabbfaa 
+##                                    40797 
+## a042cc712da71d1aa7dd0ab982cab60b67d2d810 
+##                                    39236 
+## 96178f7f342598dc15d13177f2cd9c64aa8aa3a0 
+##                                    35408 
+## c331bd156880c89dba211067ec3e7f1043e6618a 
+##                                    34927 
+## d2b5fe929ec47215f403406a2cea01ec59edff64 
+##                                    32174 
+## 15c039d6943c5d650efc1e66cce1adf04565f288 
+##                                    28311 
+## 61e4005f350612016961644883a8b13bf7c73ca7 
+##                                    26338 
+## 3c19ebffface37c4a00bea89577ee62bd195fa59 
+##                                    23628 
+## 5afc1c334350447ab403f89cd4184fd7b3a799a1 
+##                                    23461 
+## 43acb4c2fe70c777661ea91bb6a497d41b71d4df 
+##                                    21681 
+## 3f6e055ec38b09da1fcb8eb9147b67be5f2c26c0 
+##                                    21114 
+## dcfafd3cd92a93c8969bd49c822d005e5a0d5d6a 
+##                                    20962 
+## c1cc62bcfb7fcf3247979d7308d131b3e4515618 
+##                                    20258 
+## 371daf9b1c029c30b287c3abb6b2ca659a3c1e55 
+##                                    20211 
+## a3f764df4c7ad5b8f4c3ab82cc6b2386c15606d5 
+##                                    19705 
+## 4f051ddf8c0f4999ea968fd905b1a2edf0ac60d3 
+##                                    18707 
+## ae17ba7f4e3aab615e5d7b6143d4b984aad96b34 
+##                                    18200 
+## 3312158445e7c4cfd27807ca5c070c6ee2da8bbf 
+##                                    17604 
+## c42f3da729cafa13f28898def99b873893a8bee5 
+##                                    17540 
+## 792d329ccdbe1f10fd0e248cee7466edd9a18582 
+##                                    17434
+</code></pre>
+
+<p>We can see the anon id of the top betweeness centrality for each forum: </p>
+
+<pre><code class="r">
+for (i in settings.databases[, 1]) {
+    print(i)
+    print(top_bm[[i]])
+}
+</code></pre>
+
+<pre><code>## [1] &quot;ed_aiplanfor&quot;
+## e99fdd408b9870bcf17419d5e212c0a364a4dbd0 
+##                                   5405.4 
+## 5a767e2af9d12ec1c09dab9eb98638d9a5f8885d 
+##                                   1501.5 
+## caeffa1d0ad81d2589ee62973a363fc91bd27561 
+##                                   1415.3 
+## 52f41bbdb61d3ef65ae98ba58f4b5043c71cd4b2 
+##                                   1015.1 
+## 476051f0a57b084645139faf96e933cf079d020b 
+##                                    858.1 
+## b1eacfc2ebdc91f89743e9e7a70b4195e99c6ce5 
+##                                    803.3 
+## 9ae0f6cfb9e83db30faca2b87203b46995f96654 
+##                                    788.5 
+## 8d745ed2bf5b5c8db1567caaa522d5c902d19e61 
+##                                    683.9 
+## 57283da96bbb27a4992e316a24a9a52e4d884ea8 
+##                                    590.0 
+## 745b06a1658783c9152dcef0d928dce18eff37da 
+##                                    456.0 
+## 60de574ce280106cf1d364f12da4cc91b2b60404 
+##                                    436.8 
+## 9d32eb7bed1f9b312878ec4f56c7a30718be5fc4 
+##                                    436.2 
+## 540e3d24e61c6a6ffaeab718d8ffb0459220b48b 
+##                                    413.0 
+## 760243d0f259cd3453eda186fb703aa52ed092dc 
+##                                    378.1 
+## 40bd1dc52753049cf4c081e6b80bbbd6059a7b8c 
+##                                    360.3 
+## e5c75cba8d9644469d08fbe9366d37aa508c1968 
+##                                    348.0 
+## 696d365f7468fa615cd11924fe06c00825f93153 
+##                                    345.0 
+## 99672c4bb7a84d4fe2c6edecf55a671a9d4a3121 
+##                                    319.2 
+## f8dd082b17cea34b5206a6fa7b3f830dfdd63360 
+##                                    319.2 
+## 726ad5dcc80f28f3435587a7697b685cd0999e25 
+##                                    300.3 
+## [1] &quot;ed_astrofor&quot;
+## 03c0e6ebff34445193b6c7c68cc59bb951fe8089 
+##                                    86204 
+## f46d050002d9abf87560899f3af4af9349d775bc 
+##                                    69081 
+## c730d376fb14523bf01be79ac927050fbc1ebb0f 
+##                                    68764 
+## a5c77cc395c9feb0ad0e7284687af2e8441bd659 
+##                                    68713 
+## 57ecaa66b4c47d56d2fa449d06204da2e65c4709 
+##                                    65079 
+## f59fa5327c4007f70e5d320156435af9bdc24c3c 
+##                                    64353 
+## f9a98ac1e3bfbe334aa9c14e871bd4dc682b7d8c 
+##                                    61983 
+## 4dcb05cdf3efb78625f8305ea997bf9c0a93a5a5 
+##                                    49188 
+## 4e595ee6f98705d6257349dd11f8ce61dbc025dc 
+##                                    48257 
+## e28b83e67ac394a0989c0849ff4c7d9291934a5f 
+##                                    46798 
+## c0c2552c387f4386f5a0cbb279df75bee630af98 
+##                                    46738 
+## ac816c943517abefdc4093b4229cda07ee2beee6 
+##                                    43319 
+## b744c2359fe2d4c7e3f09bbe6e6747d32ddd8175 
+##                                    41906 
+## 5bdf4892e5700369c51fea6488778918eb9cd397 
+##                                    39872 
+## 241865389818c3de230373f985562640bb888323 
+##                                    39020 
+## b4c39470b526ffa4abe5e2f152d2cacb3e418561 
+##                                    38239 
+## ab8ea42fa4e7f72628bf6f07e1f87ea975319c9a 
+##                                    37753 
+## 826b35ae060043ca58e6f4dc7ce4e691ccd1d0d5 
+##                                    37484 
+## bd59c17b9226cebe95da62a8808ce53a296e7f13 
+##                                    33831 
+## 655acbc6466541e7963dc8bc4a2e05cf159ea079 
+##                                    30957 
+## [1] &quot;ed_critfor&quot;
+## e6fd6651dc1b0c116f89c27ab98119b83a35399c 
+##                                    95111 
+## 878c5fbbb632b9d62640addf3276abec2a2df5f2 
+##                                    59000 
+## cfc1510b5769214a92d4a11c17c12deb7dd9b13b 
+##                                    53861 
+## e65807e299412ce8a15015974703b083cf5246eb 
+##                                    42911 
+## e4f640e526ab9e6a25e97e33b8ecf5421ce142fd 
+##                                    37523 
+## 3d53d24c860cd178fc3fecf3c415b99fbfa50511 
+##                                    34042 
+## 9d3e26b03d1d18f4b754fc0af0a87c64e8dde563 
+##                                    31406 
+## c2cafdffe3026680d70e67eeeefb5a1e99f1d857 
+##                                    27467 
+## cdfe2bbfde737031c1777c7e4fa39d2d2858fdda 
+##                                    23919 
+## 79461a7d6dc917b1354d7dc5d111c66709b0b699 
+##                                    23525 
+## 309a07aa2693d34d4db58b57d7715ae197361bdb 
+##                                    23198 
+## 8410485309a24e9e08c5d11985ff5c227c8b057c 
+##                                    22859 
+## 1ca44397e253ef795dfed137ce91c2757cc71562 
+##                                    21859 
+## 288373c1ad59b095c772a3e90122204ea789e3fb 
+##                                    20939 
+## d0c465a8b80c50fc44ebeac6bf07ae0eba94611c 
+##                                    20422 
+## 8115fabcc1e87652d48329238e87a66b51761251 
+##                                    19081 
+## 9ee4aa4f5b19060e847c1ddbdb431d53d63156d6 
+##                                    18280 
+## f6d6564e72d11b0d83f4281675747017c6a6cfa0 
+##                                    18085 
+## 60225550b4c8cf050c466019de8750d2e81f8b0c 
+##                                    18010 
+## 4ba9d9a9a2276919235ea4a36fdeeca96f165db1 
+##                                    17666 
+## [1] &quot;ed_equinefor&quot;
+## 74873787c8a41b0f6503a012bd5730ff09411ac6 
+##                                   101207 
+## 3563870d026aaf2a175e28e76ea50d943aab04ca 
+##                                    86915 
+## 28189337c30cf629d3d05ea05613765f6afd1837 
+##                                    57120 
+## f675799cad241b0b8d21ac985a268221262f208d 
+##                                    51272 
+## ae3bd3c19dbd508a281411581eb8e493cc7a5260 
+##                                    48612 
+## 06098328fbcfa25ecb76ce18202817e9f2ff2ee3 
+##                                    45218 
+## 301363b57f540ad208c0c9b4a52ba06b688d8d60 
+##                                    37229 
+## afa7a2f390fa35a4ec0d46f85f48b423bde0b9e1 
+##                                    33811 
+## 259f4b732bffcbacfdf407c59662e3c696564953 
+##                                    33731 
+## 61eb92948ec1616bc3496132b045ed984c70c9a4 
+##                                    30310 
+## 52444afc380d55a774ff330e573bbf9efbc57f7f 
+##                                    29983 
+## 9c1a3dad1d71b1531ec129a5cac5b1006af771d1 
+##                                    29473 
+## 3ef0532c0cd7027e37828f44187c502ed5438324 
+##                                    29110 
+## 812c77b74b0ab201d31bf51ffb58de0dde9ba893 
+##                                    27915 
+## 7aea6002147ed534fcb9530eb38b024c11a74a9b 
+##                                    27697 
+## e224e14efef1ad355cb48e93a64d974dc5464b5d 
+##                                    25030 
+## 158261eb3f2effda6e46833ed6655e0988e58ae6 
+##                                    24682 
+## 3aef7e42e920b22a2c02399e22ee050a95a5be71 
+##                                    24647 
+## 18a0615c7e065d1079682d77e6b80621dcdf5fd4 
+##                                    24524 
+## e53df92e9d85c1ef4c6d58babd3903db0bf898a3 
+##                                    23791 
+## [1] &quot;ed_introfor&quot;
+## 6cf62e6072fa139e6d5637f947e26a9a30558a5f 
+##                                   308031 
+## 7ff5a840a86fefb92fc6c3d2c79fe2502e927adb 
+##                                   267193 
+## e54243193928805247c7ae2fcf7f40c46a06fbaf 
+##                                   166946 
+## 06099a45eeaa36f4f6e2267392b1b8d65822dcbb 
+##                                   163249 
+## 6b3fc80186777fe1e01efcd3f14fb310bc5b8aea 
+##                                   155529 
+## b0cdcf315f19b8fd24a6ba557516289eb93bcf8a 
+##                                   147133 
+## 56512fff97729a89bbf4b752937bae1e66cc1405 
+##                                   128230 
+## 9f96959fd778d67f9819774d98fdd7471631225b 
+##                                   121371 
+## f2bfa78173941c329a1d8b11a123c3a9ab1f8eee 
+##                                    96805 
+## c6f38631f45d07ae5d943b3e949924d12346a5cc 
+##                                    93588 
+## d3ba23ec2a7d607e7c02706547bd5779d91dab38 
+##                                    93345 
+## e477f94d188d69dae3bbcf2648910e4c97196d81 
+##                                    92524 
+## 20ae763e6631792c33ecca510c75c41bed0d7a47 
+##                                    85014 
+## a3e084fe6917095335b07e11e26ae9230d4dfa9f 
+##                                    84592 
+## db61f7a5e00e6a44ee0a9bd09cdfbafe9ac56a75 
+##                                    83391 
+## 51921a075b8169a4f7422f4b52ca449a94e6562a 
+##                                    80414 
+## 8a41da2358bd108145da57c11e5c1d590ab4a04f 
+##                                    78354 
+## adb2104bd06cc22eb7ccb7fcd71b46f10209609c 
+##                                    77728 
+## dc74dade99090e90a5a78153d4af0eb402288115 
+##                                    69092 
+## 1013a2e0fb277b66525f25019cbbbcbc65be0f99 
+##                                    67873 
+## [1] &quot;ed_edcfor&quot;
+## b334d2db581d0796f810b600c5b440c08eabbfaa 
+##                                    40797 
+## a042cc712da71d1aa7dd0ab982cab60b67d2d810 
+##                                    39236 
+## 96178f7f342598dc15d13177f2cd9c64aa8aa3a0 
+##                                    35408 
+## c331bd156880c89dba211067ec3e7f1043e6618a 
+##                                    34927 
+## d2b5fe929ec47215f403406a2cea01ec59edff64 
+##                                    32174 
+## 15c039d6943c5d650efc1e66cce1adf04565f288 
+##                                    28311 
+## 61e4005f350612016961644883a8b13bf7c73ca7 
+##                                    26338 
+## 3c19ebffface37c4a00bea89577ee62bd195fa59 
+##                                    23628 
+## 5afc1c334350447ab403f89cd4184fd7b3a799a1 
+##                                    23461 
+## 43acb4c2fe70c777661ea91bb6a497d41b71d4df 
+##                                    21681 
+## 3f6e055ec38b09da1fcb8eb9147b67be5f2c26c0 
+##                                    21114 
+## dcfafd3cd92a93c8969bd49c822d005e5a0d5d6a 
+##                                    20962 
+## c1cc62bcfb7fcf3247979d7308d131b3e4515618 
+##                                    20258 
+## 371daf9b1c029c30b287c3abb6b2ca659a3c1e55 
+##                                    20211 
+## a3f764df4c7ad5b8f4c3ab82cc6b2386c15606d5 
+##                                    19705 
+## 4f051ddf8c0f4999ea968fd905b1a2edf0ac60d3 
+##                                    18707 
+## ae17ba7f4e3aab615e5d7b6143d4b984aad96b34 
+##                                    18200 
+## 3312158445e7c4cfd27807ca5c070c6ee2da8bbf 
+##                                    17604 
+## c42f3da729cafa13f28898def99b873893a8bee5 
+##                                    17540 
+## 792d329ccdbe1f10fd0e248cee7466edd9a18582 
+##                                    17434
+</code></pre>
+
+<p>Let&#39;s find out who they are:</p>
+
+</body>
+
+</html>
+

@@ -1,0 +1,31 @@
+Network Tools
+========================================================
+
+Load settings file
+
+```{r}
+source("../load_settings.R")
+```
+
+This will generate graphml files for everything in forum, at the moment this is based on posts in a thread, bungs them in the output folder, comment this out if you don't want the Gephi files:
+
+```{r}
+#source("network_tools/graphml_generation_tool.R")
+```
+
+We can also figure out the top inbetweenness centrality for each poster using the script at:
+
+```{r}
+source("centrality_measures.R")
+```
+
+We can see the anon id of the top betweeness centrality for each forum: 
+
+```{r}
+for (i in settings.databases[,1]) {
+  print(i)
+  print(top_bm[[i]])
+}
+```
+
+Let's find out who they are:

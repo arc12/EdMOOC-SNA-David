@@ -1,0 +1,27 @@
+Text Tools
+========================================================
+
+Load settings file
+
+```{r}
+source("../load_settings.R")
+```
+
+grab topic models
+
+```{r}
+source('topic_moddeling.R')
+```
+
+List them:
+
+```{r}
+
+for (i in settings.databases[,1]) {
+  print(i)
+  print(topicslist[[i]])
+}
+
+```
+
+graph them.
