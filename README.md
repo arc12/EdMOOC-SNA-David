@@ -234,7 +234,7 @@ TODO: People who didn't survive
 TODO: Roles
 TODO: In the middle
 
-![fc1c4306aae418a2bea27e2a3415048b015b3a6b topics](fig/individual.png)
+![fc1c4306aae418a2bea27e2a3415048b015b3a6b topics](figs/individual.png)
 
 #### Visualisation of similar topics
 
@@ -246,7 +246,7 @@ Not sure this works, think the Gephi thing was better:
 
 We can get an idea of the topics in threads. This is the equine forum and we can see [17] "br nbsp problem page video"  is big in the tech feedback forum
 
-![difference in threads](figs/topicdiffs.png)
+![difference in threads](figs/forum_threads.png)
 
 #### Groups of similar authors
 
@@ -936,5 +936,5 @@ Ben's notes -> Here are the groups of authors I get after a k-means analysis on 
 #### Visualisation of author groups
 
 Bens notes: Here is a static visualisation of the relationship between all the authors. We get a quick sense that there are distinctive groups, but it's too small to show author names which is a major limitation.
-![static visualisation](figs/static.png)
+![static visualisation](figs/authorsim.png)
 
