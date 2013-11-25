@@ -1,0 +1,20 @@
+Basic Forum Stats
+========================================================
+
+```{r echo=FALSE, results='hide'}
+courseIDs<-c("aiplan","astro","crit","edc","equine","intro")
+read_chunk("./Click stream.R")
+```
+
+
+The top lengths and their referers
+-------------
+```{r echo=FALSE, results='asis'}
+
+for(i in 1:length(lectureviews.df)){
+   cat(paste("### ",courseIDs[i],"\r\n\r\n"))
+   kable(lectureviews.df[[i]], row.names=F, align=rep("c", length(colnames(lectureviews.df))))
+}
+
+
+```
